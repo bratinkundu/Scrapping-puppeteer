@@ -1,0 +1,65 @@
+
+const mongoose = require('mongoose')
+
+var SystemSchema = new mongoose.Schema({
+    createdAt: { type: Date },
+    updatedAt: { type: Date },
+    lastScrapedAt: { type: Date }
+}, { _id: false })
+
+var ThemeData = new mongoose.Schema({
+    slug: { type: String },
+    url: { type: String },
+    title: { type: String },
+    level: { type: Number },
+    index: { type: Boolean },
+    description: { type: String },
+    related_themes: [String],
+    media: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Media' }],
+}, { _id: false })
+
+
+var Theme = new mongoose.Schema({
+    slug: { type: mongoose.Schema.Types.ObjectId, },
+    data: ThemeData,
+    system: SystemSchema
+})
+
+var create = async (theme) => {
+
+    let themeData = new Themes({
+        slug: mongoose.Types.ObjectId(),
+        data: theme,
+        system: {
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            lastScrapedAt: new Date()
+        }
+    })
+
+    await themeData.save()
+}
+
+var createorupdate = async (theme) => {
+    const doc = await Themes.findOne({ 'data.slug': theme.slug })
+    if (doc) {
+        // Query to update the theme
+        doc.data = theme
+        doc.system.updatedAt = new Date()
+        doc.system.lastScrapedAt = new Date()
+        return await doc.save()
+
+    }
+    else {
+        // Query to add new Theme
+        return await create(theme)
+    }
+}
+
+Theme.methods.create = create
+Theme.methods.createorupdate = createorupdate
+
+var Themes = mongoose.model('Theme', Theme)
+
+module.exports = Themes
+

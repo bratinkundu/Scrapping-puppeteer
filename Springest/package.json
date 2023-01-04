@@ -1,0 +1,21 @@
+{
+  "name": "sitescraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bull-board/ui": "^3.9.4",
+    "axios": "^0.25.0",
+    "bull": "^4.5.2",
+    "dotenv": "^14.2.0",
+    "mongoose": "^6.1.5",
+    "puppeteer": "^13.1.1"
+  }
+}

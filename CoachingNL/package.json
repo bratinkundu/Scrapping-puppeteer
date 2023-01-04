@@ -1,0 +1,26 @@
+{
+  "name": "scrape-edubookers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/366-external-tools/scrape-coaches.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/366-external-tools/scrape-coaches/issues"
+  },
+  "homepage": "https://gitlab.com/366-external-tools/scrape-coaches.git#readme",
+  "dependencies": {
+    "bull": "^4.2.0",
+    "dotenv": "^11.0.0",
+    "env": "0.0.2",
+    "mongoose": "^6.1.5",
+    "puppeteer": "^7.0.4"
+  }
+}
